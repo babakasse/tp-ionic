@@ -1,4 +1,4 @@
-'use strict';
+/*'use strict';
 
 angular.module('starter')
     .controller('DataController', ['$scope', 'dataService'], function ($scope, dataService) {
@@ -13,4 +13,4 @@ angular.module('starter')
         }
 
        return $scope.infoPost();
-    });
+    }); */

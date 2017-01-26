@@ -11,14 +11,18 @@ angular.module('starter', ['ionic', 'app.data-service'])
     .state('root', {
       url: '/root',
       abstract:true,
-       templateUrl: 'tab.html'
+       templateUrl: 'tab.html',
+       onEnter: function($state, dataService){
+         dataService.autoLogin();
+       }
     })
 
      .state('root.home', {
       url: '/home',
       views: {
         homeView: {
-          templateUrl: 'home.html'
+          templateUrl: 'home.html',
+          controller :'DataController'
         }
       }
     })
@@ -63,6 +67,15 @@ angular.module('starter', ['ionic', 'app.data-service'])
   });
 })
 
-.controller('DataController', function ($scope) {
+    .controller('DataController', function ($scope, dataService) {
 
-});
+      dataService.autoLogin();
+      dataService.getCurrentUser();
+   
+            dataService.getPosts().then(function(data){
+                $scope.posts=data;
+            },function(error){
+                console.log(error);
+            })
+
+    });

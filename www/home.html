@@ -1,28 +1,28 @@
 <ion-view title="Home">
 <ion-content>
-<div ng-controller="DataController">
+<div ng-repeat="post in posts">
 
   <div class="list card">
     <div class="item item-avatar">
-      <img src="img/ella.jpg">
-      <h2></h2>
-      <p>November 05, 1955</p>
+      <img ng-src="{{post.user.profilePictureURL}}">
+      <h2>{{post.user.displayName}}</h2>
+      <p>{{post.createdAt}}</p>
+      <p class="ion-heart"></p>
     </div>
 
     <div class="item item-body">
-      <img class="full-image" src="img/image-1.jpeg">
+      <img class="full-image" ng-src="{{post.imageURL}}">
       <p>
-        This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-        the content is from a card-body consisting of an image and paragraph text. The footer
-        consists of tabs, icons aligned left, within the card-footer.
+        {{post.message}}
       </p>
       <p>
-        <a href="#" class="subdued">1 Like</a>
-        <a href="#" class="subdued">5 Comments</a>
+        <a href="#" class="subdued">{{post.likesCount}} Like</a>
+        <a href="#" class="subdued">{{post.commentsCount}} Comments</a>
       </p>
     </div>
   </div>
 
 </div>
+
 <ion-content>
 </ion-view>
